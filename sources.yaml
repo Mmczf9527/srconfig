@@ -1,10 +1,10 @@
 rules:
   - type: RULE-SET
     url: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml
-    policy: REJECT-200
+    policy: REJECT
   - type: RULE-SET
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Advertising/Advertising.list
-    policy: REJECT-200
+    policy: REJECT
   - type: RULE-SET
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/DouYin/DouYin.list
     policy: DIRECT
