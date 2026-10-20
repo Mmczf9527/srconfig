@@ -47,7 +47,7 @@ def fetch_rules(url):
         print(f"Error fetching {url}: {e}")
         return []
 
-def parse_rule(rule_lines, policy="REJECT", is_ip=False):
+def parse_rule(rule_lines, policy="REJECT-200", is_ip=False):
     """
     解析 RULE-SET
     自动识别：
@@ -118,7 +118,7 @@ def generate_rules():
     hardcoded_values = []  # list of domain strings (lower) preserving order
     for source in config.get('rules', []):
         stype = source.get('type', '').upper()
-        policy = (source.get('policy', '') or "").upper() or "REJECT"
+        policy = (source.get('policy', '') or "").upper() or "REJECT-200"
 
         if stype in ('DOMAIN-SUFFIX', 'DOMAIN'):
             value = source.get('value')
@@ -192,8 +192,8 @@ def generate_rules():
             f.write(quic_block_rule + '\n')
             written.add(quic_block_rule)
 
-        # 0) RULE-SET REJECT
-        reject_lines = ruleset_rules_by_policy.get("REJECT", [])
+        # 0) RULE-SET REJECT-200
+        reject_lines = ruleset_rules_by_policy.get("REJECT-200", [])
         for line in reject_lines:
             if line not in written:
                 f.write(line + '\n')
